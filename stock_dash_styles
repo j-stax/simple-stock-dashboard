@@ -1,0 +1,87 @@
+body {
+    padding: 0px 10px;
+}
+
+h1 {
+    padding: 15px 5px;
+    background-image: url('../img/stock-market-img.jpg');
+    color: #d3d3d3;
+}
+
+nav a {
+    padding-right: 15px;
+}
+
+nav {
+    margin-bottom: 40px;
+}
+
+nav, main {
+    padding-left: 5px;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#stock-search {
+    width: 370px;
+    margin: auto;
+    flex: 0 1 100%;
+}
+
+#stock-data {
+    width: 500px;
+    margin: auto;
+    flex: 0 1 100%;
+}
+
+#ticker {
+    text-transform: uppercase;
+}
+
+#error-value-ticker {
+    position: relative;
+    left: 130px;
+    top: -15px;
+    font-size: 10pt;
+}
+
+.error-msg {
+    color: red;
+    font-style: italic;
+}
+
+.hidden {
+    display: none;
+}
+
+caption {
+    padding-bottom: 5px;
+}
+
+#stock-table {
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid;
+    padding: 0px 5px;
+    text-align: center;
+}
+
+#rocket {
+    font-size: 35pt;
+    position: fixed;
+    left: -75px;
+    top: 600px;
+    animation: toTheMoon 2s ease-in 2s 2 normal;
+}
+
+@keyframes toTheMoon {
+    from { left: 25px; top: 500px; }
+    to   { left: 1000px; top: -75px; }
+}
+   
