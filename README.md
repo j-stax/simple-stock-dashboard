@@ -1,1 +1,1 @@
-# stock_dashboard
+This is a simple web application that utilizes third-party APIs created by alphavantage.co to request stock price and company financial data. The Stock Info navigation link allows you to search your favorite stock price using the ticker symbol. The DCF Model navigation link allows you to retrieve essential financial data for the past three years for a stock/company, which aids in your assumption inputs that contributes to you building out your Discounted Cash Flow model. 
