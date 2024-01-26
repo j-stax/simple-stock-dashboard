@@ -1,0 +1,160 @@
+body {
+    padding: 0px 10px;
+}
+
+h1 {
+    padding: 15px 5px;
+    background-image: url('../img/stock-market-img.jpg');
+    color: #d3d3d3;
+}
+
+nav a {
+    padding-right: 15px;
+}
+
+nav {
+    margin-bottom: 35px;
+}
+
+nav, main {
+    padding-left: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+#model-table, #assump-table {
+    margin-top: 15px;
+    border: 1px solid;
+}
+
+#assumptions {
+    display: flex;
+}
+
+.error-msg {
+    font-size: 0.85em;
+    font-style: italic;
+    color: red;
+}
+
+#error-tax-rate {
+    position: relative;
+    left: 240px;
+    margin-top: 3px;
+}
+
+#error-ticker {
+    padding-left: 5px;
+}
+
+#error-msg-loading {
+    font-size: 14pt;
+    color: red;
+    font-style: italic;
+}
+
+#lblTicker {
+    display: block;
+}
+
+#ticker {
+    width: 140px;
+    text-transform: uppercase;
+}
+
+#ticker-div {
+    position: relative;
+    left: 150px;
+    top: -7px;
+}
+
+#getDataBtn {
+    display: block;
+    margin-left: 3px;
+    margin-top: 5px;
+    width: 140px;
+    height: 25px;
+    background: radial-gradient(white, lightgrey);
+    border: none;
+    box-shadow: 2px 2px 3px black;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#getDataBtn:hover {
+    color: grey;
+}
+
+#getDataBtn:active {
+    transform: scale(0.95);
+    background: radial-gradient(white, darkgrey);
+}
+
+caption {
+    display: inline-block;
+    text-align: left;
+    font-weight: bold;
+    padding-left: 2px;
+    padding-bottom: 2px;
+}
+
+th, td {
+    padding: 1px 25px;
+    text-align: right;
+}
+
+.column1, .column1-assump {
+    text-align: left;
+    padding-left: 3px;
+    font-size: 11pt;
+}
+
+.column1 {
+    width: 240px;
+}
+
+.column1-assump {
+    width: 200px;
+}
+
+.row1-assump {
+    border-top: 1px solid;
+}
+
+.row-years {
+    border-bottom: 1px solid;
+}
+
+.row-ebiat, .row-fcf, .row-price {
+    font-weight: bold;
+}
+
+.row-tax, .row-working-cap {
+    border-bottom: 1px solid;
+}
+
+.year0-inputs {
+    width: 55px;
+    text-align: right;
+}
+
+.assump-inputs {
+    width: 25px;
+    text-align: center;
+    margin: 1px 0px;
+}
+
+#rocket {
+    font-size: 35pt;
+    position: fixed;
+    left: -75px;
+    top: 600px;
+    animation: toTheMoon 2s ease-in 2s 2 normal;
+}
+
+@keyframes toTheMoon {
+    from { left: 25px; top: 500px; }
+    to   { left: 1000px; top: -75px; }
+}

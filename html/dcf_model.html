@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DCF Model</title>
+    <link rel="stylesheet" href="../css/dcf_model_styles.css">
+    <script src="../js/dcf_model_script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Stock Dashboard</h1>
+        <!-- Links -->
+        <nav>
+            <a href="../html/stock_dashboard_v1.1.html">Stock Info</a>
+            <a href="../html/dcf_model_v1.1.html">DCF Model</a>
+        </nav>  
+    </header> 
+    <main>
+        <section id="assumptions">
+            <table id="assump-table">
+                <caption>Assumptions</caption>
+                <tr id="row1-assump">
+                    <td class="column1-assump row1-assump">EBIT growth rate</td>
+                    <td class="row1-assump"><input class="assump-inputs" id="assump-ebit" type="text" value="5"> %</td>
+                </tr>
+                <tr>
+                    <td class="column1-assump">Tax rate</td>
+                    <td><input class="assump-inputs" id="assump-tax" type="text" value="20"> %</td>
+                </tr>
+                <tr>
+                    <td class="column1-assump">Working capital as a pct of EBIT</td>
+                    <td><input class="assump-inputs" id="assump-working-cap" type="text" value="10"> %</td>
+                </tr>
+                <tr>
+                    <td class="column1-assump">Discount rate</td>
+                    <td><input class="assump-inputs" id="assump-discount-rate" type="text" value="10"> %</td>
+                </tr>
+                <tr>
+                    <td class="column1-assump">Avg. CAPEX to EBITDA ratio</td>
+                    <td><input class="assump-inputs"" id="capex-avg" type="text" disabled> %</td>
+                </tr>
+            </table>
+            <div id="ticker-div">
+                <label for="ticker" id="lblTicker">Ticker</label>
+                <input type="text" id="ticker" value="pltr">
+                <span class="error-msg hidden" id="error-ticker">Enter a ticker</span>
+                <input type="button" value="Get financial data" id="getDataBtn">
+                <p class="hidden" id="error-msg-loading"><b></b></p>
+            </div>
+        </section>
+        <p class="error-msg hidden" id="error-tax-rate">Enter a tax rate</p>
+        <p id="test1">test1</p>
+        <p id="test2">test2</p>
+        <!-- Valuation model -->
+        <section id="model">
+            <table id="model-table">
+                <caption><span id="company">Company</span> Valuation ($ millions)</caption>
+                <tr>
+                    <th class="row-years column1" colspan="5"></th>
+                    <th class="row-years">2020</th>
+                    <th class="row-years">2021</th>
+                    <th class="row-years">2022</th>
+                    <th class="row-years">2023</th>
+                    <th class="row-years">2024</th>
+                    <th class="row-years">2025</th>
+                    <th class="row-years">2026</th>
+                    <th class="row-years">2027</th>
+                    <th class="row-years">2028</th>
+                </tr>
+                <tr>
+                    <td class="column1" colspan="5">EBIT</td>
+                    <td id="ebit-3"></td>
+                    <td id="ebit-2"></td>
+                    <td id="ebit-1"></td>
+                    <td><input class="year0-inputs" id="ebit0" type="text"></td>
+                    <td id="ebit1"></td>
+                    <td id="ebit2"></td>
+                    <td id="ebit3"></td>
+                    <td id="ebit4"></td>
+                    <td id="ebit5"></td>
+                </tr>
+                <tr>
+                    <td class="column1" colspan="5">&#8722; taxes</td>
+                    <td class="row-tax" id="taxes-3"></td>
+                    <td class="row-tax" id="taxes-2"></td>
+                    <td class="row-tax" id="taxes-1"></td>
+                    <td class="row-tax" id="taxes0"></td>
+                    <td class="row-tax" id="taxes1"></td>
+                    <td class="row-tax" id="taxes2"></td>
+                    <td class="row-tax" id="taxes3"></td>
+                    <td class="row-tax" id="taxes4"></td>
+                    <td class="row-tax" id="taxes5"></td>
+                </tr>
+                <tr>
+                    <td class="column1 row-ebiat" colspan="5">EBIAT</td>
+                    <td class="row-ebiat" id="ebiat-3"></td>
+                    <td class="row-ebiat" id="ebiat-2"></td>
+                    <td class="row-ebiat" id="ebiat-1"></td>
+                    <td class="row-ebiat" id="ebiat0"></td>
+                    <td class="row-ebiat" id="ebiat1"></td>
+                    <td class="row-ebiat" id="ebiat2"></td>
+                    <td class="row-ebiat" id="ebiat3"></td>
+                    <td class="row-ebiat" id="ebiat4"></td>
+                    <td class="row-ebiat" id="ebiat5"></td>
+                </tr>
+                <tr>
+                    <td class="column1" colspan="5">&#43; depreciation and amortization</td>
+                    <td id="deprec-3"></td>
+                    <td id="deprec-2"></td>
+                    <td id="deprec-1"></td>
+                    <td><input class="year0-inputs" id="deprec0" type="text"></td>
+                    <td id="deprec1"></td>
+                    <td id="deprec2"></td>
+                    <td id="deprec3"></td>
+                    <td id="deprec4"></td>
+                    <td id="deprec5"></td>
+                </tr>
+                <tr>
+                    <td class="column1" colspan="5">&#8722; capital expenditures</td>
+                    <td id="capex-3"></td>
+                    <td id="capex-2"></td>
+                    <td id="capex-1"></td>
+                    <td id="capex0"></td>
+                    <td id="capex1"></td>
+                    <td id="capex2"></td>
+                    <td id="capex3"></td>
+                    <td id="capex4"></td>
+                    <td id="capex5"></td>
+                </tr>
+                <tr>
+                    <td class="column1" colspan="5">&#8722; change in working captial</td>
+                    <td class="row-working-cap" id="working-cap-3"></td>
+                    <td class="row-working-cap" id="working-cap-2"></td>
+                    <td class="row-working-cap" id="working-cap-1"></td>
+                    <td class="row-working-cap" id="working-cap0"></td>
+                    <td class="row-working-cap" id="working-cap1"></td>
+                    <td class="row-working-cap" id="working-cap2"></td>
+                    <td class="row-working-cap" id="working-cap3"></td>
+                    <td class="row-working-cap" id="working-cap4"></td>
+                    <td class="row-working-cap" id="working-cap5"></td>
+                </tr>
+                <tr>
+                    <td class="column1 row-fcf" colspan="5">Free cash flow</td>
+                    <td class="row-fcf" id="fcf-3"></td>
+                    <td class="row-fcf" id="fcf-2"></td>
+                    <td class="row-fcf" id="fcf-1"></td>
+                    <td class="row-fcf" id="fcf0"></td>
+                    <td class="row-fcf" id="fcf1"></td>
+                    <td class="row-fcf" id="fcf2"></td>
+                    <td class="row-fcf" id="fcf3"></td>
+                    <td class="row-fcf" id="fcf4"></td>
+                    <td class="row-fcf" id="fcf5"></td>
+                </tr>
+                <tr>
+                    <td class="column1" colspan="5">Discount factor</td>
+                    <td class="empty-cells"></td>
+                    <td class="empty-cells"></td>
+                    <td class="empty-cells"></td>
+                    <td id="disc-factor0"></td>
+                    <td id="disc-factor1"></td>
+                    <td id="disc-factor2"></td>
+                    <td id="disc-factor3"></td>
+                    <td id="disc-factor4"></td>
+                    <td id="disc-factor5"></td>
+                </tr>
+                <tr>
+                    <td class="column1" colspan="5">PV of free cash flow</td>
+                    <td class="empty-cells"></td>
+                    <td class="empty-cells"></td>
+                    <td class="empty-cells" id="pv-cashflow-1"></td>
+                    <td id="pv-cashflow0"></td>
+                    <td id="pv-cashflow1"></td>
+                    <td id="pv-cashflow2"></td>
+                    <td id="pv-cashflow3"></td>
+                    <td id="pv-cashflow4"></td>
+                    <td id="pv-cashflow5"></td>
+                </tr>
+                <tr>
+                    <td class="column1" colspan="5">Cumulative PV of free cash flow</td>
+                    <td class="empty-cells"></td>
+                    <td class="empty-cells"></td>
+                    <td class="empty-cells"></td>
+                    <td id="cumul-pv-cashflow"></td>
+                </tr>
+                <tr>
+                    <td class="column1" colspan="5">&#8722; debt</td>
+                    <td class="empty-cells"></td>
+                    <td class="empty-cells"></td>
+                    <td class="empty-cells"></td>
+                    <td id="debt"></td>
+                </tr>
+                <tr>
+                    <td class="column1" colspan="5">&#43; cash</td>
+                    <td class="empty-cells"></td>
+                    <td class="empty-cells"></td>
+                    <td class="empty-cells"></td>
+                    <td id="cash"></td>
+                </tr>
+                <tr>
+                    <td class="column1" colspan="5">Shareholder value</td>
+                    <td class="empty-cells"></td>
+                    <td class="empty-cells"></td>
+                    <td class="empty-cells"></td>
+                    <td id="shareholder-value"></td>
+                </tr>
+                <tr>
+                    <td class="column1" colspan="5">Number of shares</td>
+                    <td class="empty-cells"></td>
+                    <td class="empty-cells"></td>
+                    <td class="empty-cells"></td>
+                    <td id="total-shares"></td>
+                </tr>
+                <tr>
+                    <td class="column1 row-price" colspan="5">Implied share price (US$)</td>
+                    <td class="empty-cells"></td>
+                    <td class="empty-cells"></td>
+                    <td class="empty-cells"></td>
+                    <td class="row-price" id="share-price"></td>
+                </tr>
+            </table>
+        </section>
+        <div class="hidden" id="rocket">&#x1F680;</div>
+    </main>
+</body>
+</html>
