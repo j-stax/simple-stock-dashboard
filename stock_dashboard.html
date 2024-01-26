@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Dashboard</title>
+    <link rel="stylesheet" href="../css/stock_dash_styles_v1.1.css">
+    <script src="../js/stock_dashboard_v1.2.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Stock Dashboard</h1>
+        <!-- Links -->
+        <nav>
+            <a href="../html/stock_dashboard_v1.2.html">Stock Info</a>
+            <a href="">Company Financials</a>
+            <a href="../html/dcf_model_v1.2.html">DCF Model</a>
+        </nav>  
+    </header> 
+    <main>
+        <div id="container">
+            <!-- Stock search field -->
+            <section id="stock-search">
+                <label for="ticker">Stock Ticker</label>
+                <input type="text" id="ticker">
+                <button type="button" id="searchBtn">Search</button>
+                <p class="error-msg hidden" id="error-value-ticker">Enter a ticker.</p>
+            </section>
+            <br>
+            <!-- Stock information table -->
+            <section class="hidden" id="stock-data">  
+                <p id="loading-data">Loading...</p>
+                <p class="error-msg" id="error-loading-data"></p>
+                <table id="stock-table">
+                    <caption>Stock Info</caption>
+                    <tr>
+                        <th>Ticker</th>
+                        <th>Price</th>
+                        <th>High</th>
+                        <th>Low</th>
+                        <th>Volume</th>
+                        <th>Chg (%)</th>
+                        <th>Date</th>
+                    </tr>
+                </table>
+            </section>
+        </div>
+        <div id="rocket">&#x1F680;</div>
+    </main>
+</body>
+</html>
