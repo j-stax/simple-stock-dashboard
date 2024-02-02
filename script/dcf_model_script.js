@@ -75,10 +75,7 @@ async function getStockFinancials(ticker) {
     const balanceSheetResponse = await fetch(urlBalSheet);
     
     // Hide error msg
-    hideElement("error-msg-loading");
-
-    // DELETE AFTER
-    showText("test1", incomeStatementResponse.ok + " " + balanceSheetResponse.ok);    
+    hideElement("error-msg-loading");  
 
     // API request/response successful
     if (incomeStatementResponse.ok && balanceSheetResponse.ok) {
