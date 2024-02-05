@@ -44,6 +44,11 @@ nav, main {
     flex: 0 1 100%;
 }
 
+label {
+    font-size: 14pt;
+    font-weight: bold;
+}
+
 #ticker {
     text-transform: uppercase;
 }
