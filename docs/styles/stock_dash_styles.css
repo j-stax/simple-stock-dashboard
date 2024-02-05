@@ -19,7 +19,7 @@ nav a {
 }
 
 nav {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 nav, main {
@@ -34,6 +34,7 @@ nav, main {
 
 #stock-search {
     width: 370px;
+    padding-top 20px;
     margin: auto;
     flex: 0 1 100%;
 }
