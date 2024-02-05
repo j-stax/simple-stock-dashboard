@@ -73,6 +73,7 @@ th, td {
 }
 
 #copyright {
+    font-size: 10pt;
     position: absolute;
     left: 1210px;
     top: 520px;
