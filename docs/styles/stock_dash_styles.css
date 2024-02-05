@@ -34,7 +34,7 @@ nav, main {
 
 #stock-search {
     width: 370px;
-    padding-top 20px;
+    padding-top: 20px;
     margin: auto;
     flex: 0 1 100%;
 }
