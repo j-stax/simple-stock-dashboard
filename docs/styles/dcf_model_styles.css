@@ -146,6 +146,11 @@ th, td {
     margin: 1px 0px;
 }
 
+#copyright {    
+    position: relative;
+    left: 1170px;
+}
+
 #rocket {
     font-size: 35pt;
     position: fixed;
