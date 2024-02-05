@@ -8,6 +8,12 @@ h1 {
     color: #d3d3d3;
 }
 
+main {    
+    background-image: url('../img/stock-market-img.jpg');
+    background-size: 1400px;
+    height: 100vh;
+}
+
 nav a {
     padding-right: 15px;
 }
@@ -70,13 +76,6 @@ th, td {
     border: 1px solid;
     padding: 0px 5px;
     text-align: center;
-}
-
-#copyright {
-    font-size: 10pt;
-    position: absolute;
-    left: 1220px;
-    top: 520px;
 }
 
 #rocket {
