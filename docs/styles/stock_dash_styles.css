@@ -72,6 +72,12 @@ th, td {
     text-align: center;
 }
 
+#copyright {
+    position: absolute;
+    left: 1210px;
+    top: 520px;
+}
+
 #rocket {
     font-size: 35pt;
     position: fixed;
