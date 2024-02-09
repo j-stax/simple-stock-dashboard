@@ -114,6 +114,10 @@ th, td {
     text-align: right;
 }
 
+#th-year-6 {    
+    width: 80px;
+}
+
 .column1, .column1-assump {
     text-align: left;
     padding-left: 3px;
