@@ -24,6 +24,7 @@ nav {
 #model-table, #assump-table {
     margin-top: 15px;
     border: 1px solid;
+    box-shadow: 3px 3px 3px black;
 }
 
 #assumptions {
@@ -54,11 +55,14 @@ nav {
 
 #lblTicker {
     display: block;
+    text-shadow: 2px 2px 3px black;
 }
 
 #ticker {
     width: 140px;
     text-transform: uppercase;
+    border: 1px solid;
+    box-shadow: 3px 3px 3px black;
 }
 
 #ticker-div {
@@ -75,7 +79,7 @@ nav {
     height: 25px;
     background-color: skyblue;
     border: none;
-    box-shadow: 2px 2px 3px black;
+    box-shadow: 3px 3px 3px black;
     border-radius: 4px;
     cursor: pointer;
 }
