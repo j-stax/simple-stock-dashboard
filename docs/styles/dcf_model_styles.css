@@ -89,6 +89,10 @@ nav {
     background: radial-gradient(blue, skyblue);
 }
 
+#getDataBtn:disabled {    
+    background-color: grey;
+}
+
 caption {
     display: inline-block;
     text-align: left;
