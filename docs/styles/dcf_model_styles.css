@@ -9,15 +9,12 @@ h1 {
 }
 
 nav a {
-    padding-right: 15px;
+    padding-right: 40px;
 }
 
 nav {
     margin-bottom: 35px;
-}
-
-nav, main {
-    padding-left: 5px;
+    margin-left: 20px;
 }
 
 .hidden {
