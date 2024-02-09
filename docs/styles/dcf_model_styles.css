@@ -73,7 +73,7 @@ nav {
     margin-top: 5px;
     width: 140px;
     height: 25px;
-    background-color: cyan;
+    background-color: skyblue;
     border: none;
     box-shadow: 2px 2px 3px black;
     border-radius: 4px;
@@ -81,12 +81,12 @@ nav {
 }
 
 #getDataBtn:hover {
-    color: grey;
+    color: blue;
 }
 
 #getDataBtn:active {
     transform: scale(0.95);
-    background: radial-gradient(white, darkgrey);
+    background: radial-gradient(blue, skyblue);
 }
 
 caption {
