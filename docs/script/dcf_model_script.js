@@ -62,7 +62,7 @@ function getHistoricalData() {
 async function getStockFinancials(ticker) {
     // Create URL to access the web API
     const endpoint = "https://www.alphavantage.co/query";
-    const apiKey = "HWCZ8MM4K05A2PXH";    // Back-up apiKey=87U3MLKGFH1NNRT8
+    const apiKey = "87U3MLKGFH1NNRT8";
     const queryStringIncome = `function=INCOME_STATEMENT&symbol=${encodeURI(ticker)}&apikey=${apiKey}`;
     const urlIncome = `${endpoint}?${queryStringIncome}`;
     const queryStringBalSheet = `function=BALANCE_SHEET&symbol=${encodeURI(ticker)}&apikey=${apiKey}`;
@@ -75,7 +75,7 @@ async function getStockFinancials(ticker) {
     const balanceSheetResponse = await fetch(urlBalSheet);
     
     // Hide error msg
-    hideElement("error-msg-loading");  
+    hideElement("error-msg-loading"); 
 
     // API request/response successful
     if (incomeStatementResponse.ok && balanceSheetResponse.ok) {
@@ -157,10 +157,11 @@ function generateForecast(e) {
     const taxRate = document.getElementById("assump-tax").value.trim();
     const workingCapPct = document.getElementById("assump-working-cap").value.trim();
     const discountRate = document.getElementById("assump-discount-rate").value.trim();
+    const terminalRate = document.getElementById("assump-terminal-rate").value.trim();
     const tableCompanyName = document.getElementById("company").textContent;     // Used to check if historical data was already searched
 
     // Assumption inputs are missing or incorrect format
-    if (  isInvalid(ebitGrowthRate) || isInvalid(taxRate) || isInvalid(workingCapPct) || isInvalid(discountRate)) {
+    if (  isInvalid(ebitGrowthRate) || isInvalid(taxRate) || isInvalid(workingCapPct) || isInvalid(discountRate) || isInvalid(terminalRate) ) {
         alert("Assumptions incomplete!");
     }
     // Company data has not been requested/API call has not been made
@@ -213,8 +214,6 @@ function generateForecast(e) {
             let capexX = Math.round(ebitdaX * capexAvg);    // EBITDA * avg CAPEX (from assumptions via historical data)
             showText("capex0", capexX);
 
-            //FIX ME!!! CHANGE THE INPUT FIELD SO IT CAN BE MODIFIED BY USER FOR FORECAST
-
             for (let j = 1; j < 6; j++) {
                 let ebitX = document.getElementById("ebit" + j).textContent.substring(1);
                 ebitdaX = parseInt(ebitX) + deprecAndAmortX;
@@ -248,7 +247,7 @@ function generateForecast(e) {
                 showText("fcf" + t, freeCashFlowX);
             }
 
-            // Compute and display the discount factor and present values of free cash flows for years[0-5]
+            // Compute and display the discount factor and present values of free cash flows for years[0-6]
             let discountFactorX = 1;
             freeCashFlowX = document.getElementById("fcf0").textContent;
             let pvCashFlowX = freeCashFlowX * discountFactorX;
@@ -266,6 +265,14 @@ function generateForecast(e) {
                 showText("disc-factor" + r, discountFactorX.toFixed(4));
                 showText("pv-cashflow" + r, Math.round(pvCashFlowX));
             }
+
+            // Compute terminal value to present value and add to cumulativePVCashFlows
+            const freeCashFlowYr6 = parseInt(document.querySelector("#fcf6").value.trim());
+            let terminalRateDecimal = parseFloat(terminalRate) / 100;
+            const pvTerminalValueAtYr5 = freeCashFlowYr6 / terminalRateDecimal;
+            showText("test", discountFactorX); // DELETE AFTER
+            const pvTerminalValue = pvTerminalValueAtYr5 * discountFactorX;
+            cumulativePVCashFlows += pvTerminalValue;
 
             // Show Cumulative PV of free cash flow on table
             showText("cumul-pv-cashflow", Math.round(cumulativePVCashFlows));
