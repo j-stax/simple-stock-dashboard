@@ -3,15 +3,9 @@ body {
 }
 
 h1 {
-    padding: 15px 5px;
+    padding: 25px 5px;
     background-image: url('../img/stock-market-img.jpg');
     color: #d3d3d3;
-}
-
-main {    
-    background-image: url('../img/stock-market-img.jpg');
-    background-size: 1400px;
-    height: 100vh;
 }
 
 nav a {
@@ -20,10 +14,7 @@ nav a {
 
 nav {
     margin-bottom: 20px;
-}
-
-nav, main {
-    padding-left: 5px;
+    margin-left: 20px;
 }
 
 #container {
@@ -39,6 +30,22 @@ nav, main {
     flex: 0 1 100%;
 }
 
+button {
+    background-color: lightblue;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 3px 3px 3px black;
+}
+
+button:hover {
+    background-color: blue;
+}
+
+button:active {
+    transform: scale(0.95);
+    background: radial-gradient(blue, lightblue);
+}
+
 #stock-data {
     width: 500px;
     margin: auto;
@@ -48,10 +55,14 @@ nav, main {
 label {
     font-size: 14pt;
     font-weight: bold;
+    text-shadow: 3px 3px 2px grey;
 }
 
 #ticker {
     text-transform: uppercase;
+    box-shadow: 3px 3px 3px black;
+    border: 1px solid;
+    border-radius: 4px;
 }
 
 #error-value-ticker {
@@ -80,7 +91,7 @@ caption {
 
 th, td {
     border: 1px solid;
-    padding: 0px 5px;
+    padding: 8px;
     text-align: center;
 }
 

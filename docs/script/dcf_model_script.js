@@ -62,7 +62,7 @@ function getHistoricalData() {
 async function getStockFinancials(ticker) {
     // Create URL to access the web API
     const endpoint = "https://www.alphavantage.co/query";
-    const apiKey = "87U3MLKGFH1NNRT8";
+    const apiKey = "ZMU4WUWQX0PWD2YJ";    // back-up apiKey=HWCZ8MM4K05A2PXH
     const queryStringIncome = `function=INCOME_STATEMENT&symbol=${encodeURI(ticker)}&apikey=${apiKey}`;
     const urlIncome = `${endpoint}?${queryStringIncome}`;
     const queryStringBalSheet = `function=BALANCE_SHEET&symbol=${encodeURI(ticker)}&apikey=${apiKey}`;

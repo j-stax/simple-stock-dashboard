@@ -3,21 +3,18 @@ body {
 }
 
 h1 {
-    padding: 15px 5px;
+    padding: 25px 5px;
     background-image: url('../img/stock-market-img.jpg');
     color: #d3d3d3;
 }
 
 nav a {
-    padding-right: 15px;
+    padding-right: 40px;
 }
 
 nav {
     margin-bottom: 35px;
-}
-
-nav, main {
-    padding-left: 5px;
+    margin-left: 20px;
 }
 
 .hidden {
@@ -27,6 +24,7 @@ nav, main {
 #model-table, #assump-table {
     margin-top: 15px;
     border: 1px solid;
+    box-shadow: 3px 3px 3px black;
 }
 
 #assumptions {
@@ -57,11 +55,15 @@ nav, main {
 
 #lblTicker {
     display: block;
+    text-shadow: 3px 3px 2px grey;
 }
 
 #ticker {
     width: 140px;
     text-transform: uppercase;
+    border: 1px solid;
+    border-radius: 4px;
+    box-shadow: 3px 3px 3px black;
 }
 
 #ticker-div {
@@ -73,23 +75,27 @@ nav, main {
 #getDataBtn {
     display: block;
     margin-left: 3px;
-    margin-top: 5px;
+    margin-top: 10px;
     width: 140px;
     height: 25px;
-    background: radial-gradient(white, lightgrey);
+    background-color: skyblue;
     border: none;
-    box-shadow: 2px 2px 3px black;
+    box-shadow: 3px 3px 3px black;
     border-radius: 4px;
     cursor: pointer;
 }
 
 #getDataBtn:hover {
-    color: grey;
+    background-color: blue;
 }
 
 #getDataBtn:active {
     transform: scale(0.95);
-    background: radial-gradient(white, darkgrey);
+    background: radial-gradient(blue, skyblue);
+}
+
+#getDataBtn:disabled {    
+    background-color: grey;
 }
 
 caption {
