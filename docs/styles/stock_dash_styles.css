@@ -8,12 +8,18 @@ h1 {
     color: #d3d3d3;
 }
 
+main {    
+    background-image: url('../img/stock-market-img.jpg');
+    background-size: 1400px;
+    height: 100vh;
+}
+
 nav a {
     padding-right: 15px;
 }
 
 nav {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 nav, main {
@@ -28,6 +34,7 @@ nav, main {
 
 #stock-search {
     width: 370px;
+    padding-top: 20px;
     margin: auto;
     flex: 0 1 100%;
 }
@@ -36,6 +43,11 @@ nav, main {
     width: 500px;
     margin: auto;
     flex: 0 1 100%;
+}
+
+label {
+    font-size: 14pt;
+    font-weight: bold;
 }
 
 #ticker {
@@ -82,6 +94,6 @@ th, td {
 
 @keyframes toTheMoon {
     from { left: 25px; top: 500px; }
-    to   { left: 1000px; top: -75px; }
+    to   { left: 1300px; top: -75px; }
 }
    
