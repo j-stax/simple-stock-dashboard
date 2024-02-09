@@ -53,8 +53,10 @@ function getHistoricalData() {
         showElement("error-tax-rate");
     }
     else {
-        getStockFinancials(ticker);     // Fetch stock data
         hideElement("error-tax-rate");
+        showElement("loading-msg");
+        document.querySelector("#loading-msg").textContent = "Loading company financial history...";
+        getStockFinancials(ticker);     // Fetch stock data
     }
 
 }
@@ -75,7 +77,7 @@ async function getStockFinancials(ticker) {
     const balanceSheetResponse = await fetch(urlBalSheet);
     
     // Hide error msg
-    hideElement("error-msg-loading"); 
+    hideElement("loading-msg"); 
 
     // API request/response successful
     if (incomeStatementResponse.ok && balanceSheetResponse.ok) {
@@ -84,8 +86,8 @@ async function getStockFinancials(ticker) {
         responseReceived(ticker, incomeJsonResult, balSheetJsonResult);
     }
     else {
-        showElement("error-msg-loading");
-        document.getElementById("error-msg-loading").textContent = "Error with API request!";
+        showElement("loading-msg");
+        document.getElementById("loading-msg").textContent = "Error with API request!";
     }
 
 }
@@ -142,8 +144,8 @@ function responseReceived(ticker, incomeJsonResult, balSheetJsonResult) {
         showText("total-shares", Math.round(totalShares / 1000000));
     }
     else {
-        showElement("error-msg-loading");
-        document.getElementById("error-msg-loading").textContent = `Error loading data for ${ticker}. Check ticker entry!`;
+        showElement("loading-msg");
+        document.getElementById("loading-msg").textContent = `Error loading data for ${ticker}. Check ticker entry!`;
     }
 }
 
@@ -166,12 +168,12 @@ function generateForecast(e) {
     }
     // Company data has not been requested/API call has not been made
     else if (tableCompanyName == "Company") {
-        showElement("error-msg-loading");
-        document.getElementById("error-msg-loading").textContent = "Retrieve company financial data!"
+        showElement("loading-msg");
+        document.getElementById("loading-msg").textContent = "Retrieve company financial data!"
     }
     // Compute arithmetic based on input figures and generate forecast data
     else {
-        hideElement("error-msg-loading");
+        hideElement("loading-msg");
         const ebitGrowthRateDecimal = parseFloat(ebitGrowthRate) / 100;
         const taxRateDecimal = parseFloat(taxRate) / 100;
         const workingCapDecimal = parseFloat(workingCapPct) / 100;
