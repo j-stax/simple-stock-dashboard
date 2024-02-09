@@ -49,7 +49,7 @@ function searchStockData() {
 async function getStockData(ticker) {
     // Create URL to access the web API
     const endpoint = "https://www.alphavantage.co/query";
-    const apiKey = "87U3MLKGFH1NNRT8";    // Back-up apiKey=ZMU4WUWQX0PWD2YJ
+    const apiKey = "HWCZ8MM4K05A2PXH";    // Back-up apiKey=87U3MLKGFH1NNRT8
     const queryString = `function=GLOBAL_QUOTE&symbol=${encodeURI(ticker)}&apikey=${apiKey}`;
     const url = `${endpoint}?${queryString}`;
 
