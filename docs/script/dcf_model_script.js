@@ -272,7 +272,6 @@ function generateForecast(e) {
             const freeCashFlowYr6 = parseInt(document.querySelector("#fcf6").value.trim());
             let terminalRateDecimal = parseFloat(terminalRate) / 100;
             const pvTerminalValueAtYr5 = freeCashFlowYr6 / terminalRateDecimal;
-            showText("test", discountFactorX); // DELETE AFTER
             const pvTerminalValue = pvTerminalValueAtYr5 * discountFactorX;
             cumulativePVCashFlows += pvTerminalValue;
 
