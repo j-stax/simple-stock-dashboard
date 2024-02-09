@@ -140,7 +140,7 @@ th, td {
     border-bottom: 1px solid;
 }
 
-.year0-inputs, #fcf6 {
+.year0-inputs{
     width: 55px;
     text-align: right;
 }
