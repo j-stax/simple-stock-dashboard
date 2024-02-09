@@ -37,6 +37,10 @@
                     <td><input class="assump-inputs" id="assump-discount-rate" type="text" value="10"> %</td>
                 </tr>
                 <tr>
+                    <td class="column1-assump">Terminal Rate (discount rate - terminal growth rate)</td>
+                    <td><input class="assump-inputs" id="assump-terminal-rate" type="text" value="6"> %</td>
+                </tr>
+                <tr>
                     <td class="column1-assump">Avg. CAPEX to EBITDA ratio</td>
                     <td><input class="assump-inputs"" id="capex-avg" type="text" disabled> %</td>
                 </tr>
@@ -50,6 +54,7 @@
             </div>
         </section>
         <p class="error-msg hidden" id="error-tax-rate">Enter a tax rate</p>
+        <p id="test"></p>
         <!-- Valuation model -->
         <section id="model">
             <table id="model-table">
@@ -65,13 +70,14 @@
                     <th class="row-years">2026</th>
                     <th class="row-years">2027</th>
                     <th class="row-years">2028</th>
+                    <th class="row-years">2029</th>
                 </tr>
                 <tr>
                     <td class="column1" colspan="5">EBIT</td>
                     <td id="ebit-3"></td>
                     <td id="ebit-2"></td>
                     <td id="ebit-1"></td>
-                    <td><input class="year0-inputs" id="ebit0" type="text"></td>
+                    <td><input class="year0-inputs" id="ebit0" type="text" value="0"></td>
                     <td id="ebit1"></td>
                     <td id="ebit2"></td>
                     <td id="ebit3"></td>
@@ -89,6 +95,7 @@
                     <td class="row-tax" id="taxes3"></td>
                     <td class="row-tax" id="taxes4"></td>
                     <td class="row-tax" id="taxes5"></td>
+                    <td class="row-tax" id="taxes6"></td>
                 </tr>
                 <tr>
                     <td class="column1 row-ebiat" colspan="5">EBIAT</td>
@@ -107,7 +114,7 @@
                     <td id="deprec-3"></td>
                     <td id="deprec-2"></td>
                     <td id="deprec-1"></td>
-                    <td><input class="year0-inputs" id="deprec0" type="text"></td>
+                    <td><input class="year0-inputs" id="deprec0" type="text" value="0"></td>
                     <td id="deprec1"></td>
                     <td id="deprec2"></td>
                     <td id="deprec3"></td>
@@ -137,6 +144,7 @@
                     <td class="row-working-cap" id="working-cap3"></td>
                     <td class="row-working-cap" id="working-cap4"></td>
                     <td class="row-working-cap" id="working-cap5"></td>
+                    <td class="row-working-cap" id="working-cap6"></td>
                 </tr>
                 <tr>
                     <td class="column1 row-fcf" colspan="5">Free cash flow</td>
@@ -149,6 +157,7 @@
                     <td class="row-fcf" id="fcf3"></td>
                     <td class="row-fcf" id="fcf4"></td>
                     <td class="row-fcf" id="fcf5"></td>
+                    <td><input class="row-fcf" id="fcf6" type="text" value="0"></td>
                 </tr>
                 <tr>
                     <td class="column1" colspan="5">Discount factor</td>
