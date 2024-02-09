@@ -27,6 +27,10 @@ nav {
     box-shadow: 3px 3px 3px black;
 }
 
+#model-table {
+    width: 100%;
+}
+
 #assumptions {
     display: flex;
 }
@@ -106,7 +110,7 @@ caption {
 }
 
 th, td {
-    padding: 1px 25px;
+    padding: 1px 10px;
     text-align: right;
 }
 
@@ -140,13 +144,8 @@ th, td {
     border-bottom: 1px solid;
 }
 
-.year0-inputs{
+.year0-inputs, #fcf6 {
     width: 55px;
-    text-align: right;
-}
-
-#fcf6 {
-    width: 35px;
     text-align: right;
 }
 
