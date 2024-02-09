@@ -81,7 +81,7 @@ nav {
 }
 
 #getDataBtn:hover {
-    color: blue;
+    background-color: blue;
 }
 
 #getDataBtn:active {
