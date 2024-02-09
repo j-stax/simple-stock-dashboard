@@ -135,7 +135,7 @@ th, td {
     border-bottom: 1px solid;
 }
 
-.year0-inputs {
+.year0-inputs, #fcf6 {
     width: 55px;
     text-align: right;
 }
@@ -158,3 +158,5 @@ th, td {
     from { left: 25px; top: 500px; }
     to   { left: 1300px; top: -75px; }
 }
+
+
