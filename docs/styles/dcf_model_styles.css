@@ -73,7 +73,7 @@ nav {
     margin-top: 5px;
     width: 140px;
     height: 25px;
-    background: radial-gradient(white, lightgrey);
+    background-color: cyan;
     border: none;
     box-shadow: 2px 2px 3px black;
     border-radius: 4px;
