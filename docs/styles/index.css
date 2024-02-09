@@ -14,10 +14,7 @@ nav a {
 
 nav {
     margin-bottom: 20px;
-}
-
-nav, main {
-    padding-left: 5px;
+    margin-left: 20px;
 }
 
 #container {
@@ -74,7 +71,7 @@ caption {
 
 th, td {
     border: 1px solid;
-    padding: 0px 5px;
+    padding: 8px;
     text-align: center;
 }
 
