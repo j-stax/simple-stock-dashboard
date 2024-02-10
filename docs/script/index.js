@@ -30,7 +30,7 @@ function tickerInput(e) {
 
 // SearchBtn is clicked
 function searchStockData() {
-    const ticker = document.getElementById("ticker").value.trim().toUpperCase();
+    const ticker = document.getElementById("ticker");
 
     // Show error message if field left blank
     if (ticker.length === 0) {
@@ -40,7 +40,9 @@ function searchStockData() {
         showElement("stock-data");
         showElement("loading-data");
         hideElement("error-loading-data");
-        getStockData(ticker);     // Fetch stock data
+        getStockData(ticker.value.trim().toUpperCase());     // Fetch stock data
+        ticker.value = "";    // Clear ticker input field
+        ticker.focus();       // Place focus back on input field
     }
 
 }
