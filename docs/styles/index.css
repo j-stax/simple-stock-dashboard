@@ -52,6 +52,10 @@ button:active {
     flex: 0 1 100%;
 }
 
+#loading-data {
+    text-align: center;
+}
+
 label {
     font-size: 14pt;
     font-weight: bold;
