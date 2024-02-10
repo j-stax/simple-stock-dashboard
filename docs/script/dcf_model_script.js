@@ -283,9 +283,9 @@ function generateForecast(e) {
             showText("cumul-pv-cashflow", Math.round(cumulativePVCashFlows));
 
             // Compute and show Shareholder Value
-            const debt = document.getElementById("debt").textContent;
-            const cash = document.getElementById("cash").textContent;
-            const shareholderValue = cumulativePVCashFlows + cash - debt;
+            const debt = parseFloat(document.getElementById("debt").textContent);
+            const cash = parseFloat(document.getElementById("cash").textContent);
+            const shareholderValue = cumulativePVCashFlows - debt + cash;
             showText("shareholder-value", Math.round(shareholderValue));
             
             // Implied Share Price
