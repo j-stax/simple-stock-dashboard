@@ -4,7 +4,8 @@ function domLoaded() {
     document.getElementById("ticker").addEventListener("input", tickerInput);
     document.getElementById("assump-tax").addEventListener("input", assumptionsTaxInput);
     document.getElementById("getDataBtn").addEventListener("click", getHistoricalData);
-
+    document.querySelector("#fcf6").addEventListener("input", generateForecast);
+    
     // Add event listeners to current-year inputs in valuation table
     const year0InputsList = document.getElementsByClassName("year0-inputs");
     for (let item of year0InputsList) {
@@ -158,7 +159,7 @@ function generateForecast(e) {
     const ebitGrowthRate = document.getElementById("assump-ebit").value.trim();
     const taxRate = document.getElementById("assump-tax").value.trim();
     const workingCapPct = document.getElementById("assump-working-cap").value.trim();
-    const discountRate = document.getElementById("assump-discount-rate").value.trim();
+    const discountRate = parseFloat(document.getElementById("assump-discount-rate").value.trim()) / 100;
     const terminalRate = document.getElementById("assump-terminal-rate").value.trim();
     const tableCompanyName = document.getElementById("company").textContent;     // Used to check if historical data was already searched
 
@@ -202,7 +203,7 @@ function generateForecast(e) {
             }
         }
 
-        // Compute and output forecast data for the remaining rows and columns of the table
+        // Compute and output forecast data for CAPEX, chg in working capital, and free cash flow for years [0-5]
         if (cellNameGeneric === "deprec") {
             // Display depreciation input value across the forecast
             let deprecAndAmortX = parseInt(cellInputVal);
@@ -248,16 +249,18 @@ function generateForecast(e) {
                 freeCashFlowX = ebiatX + deprecAndAmortX - capexX - workingCapX;
                 showText("fcf" + t, freeCashFlowX);
             }
+        }
 
-            // Compute and display the discount factor and present values of free cash flows for years[0-6]
+        // Compute and display figures for present value of free cash flow, cumulative pv of fcf, and implied share price
+        if (cellNameGeneric === "fcf") {
+
+            // Compute and display the discount factor and present values of free cash flows for years[0-5]
             let discountFactorX = 1;
-            freeCashFlowX = document.getElementById("fcf0").textContent;
+            let freeCashFlowX = document.getElementById("fcf0").textContent;
             let pvCashFlowX = freeCashFlowX * discountFactorX;
             showText("disc-factor0", parseFloat(discountFactorX).toFixed(2));
             showText("pv-cashflow0", pvCashFlowX);
 
-            let discountRate = document.getElementById("assump-discount-rate").value;
-            discountRate = parseFloat(discountRate) / 100;
             let cumulativePVCashFlows = pvCashFlowX;
             for (let r = 1; r < 6; r++) {
                 freeCashFlowX = document.getElementById("fcf" + r).textContent;
@@ -269,13 +272,14 @@ function generateForecast(e) {
             }
 
             // Compute terminal value to present value and add to cumulativePVCashFlows
-            const freeCashFlowYr6 = parseInt(document.querySelector("#fcf6").value.trim());
+            const freeCashFlowYr6 = cellInputVal;
             let terminalRateDecimal = parseFloat(terminalRate) / 100;
             const pvTerminalValueAtYr5 = freeCashFlowYr6 / terminalRateDecimal;
             const pvTerminalValue = pvTerminalValueAtYr5 * discountFactorX;
             cumulativePVCashFlows += pvTerminalValue;
 
-            // Show Cumulative PV of free cash flow on table
+            // Show present value of terminal value and cumulative PV of free cash flow on table
+            showText("pv-cashflow6", Math.round(pvTerminalValue));
             showText("cumul-pv-cashflow", Math.round(cumulativePVCashFlows));
 
             // Compute and show Shareholder Value
@@ -284,7 +288,7 @@ function generateForecast(e) {
             const shareholderValue = cumulativePVCashFlows + cash - debt;
             showText("shareholder-value", Math.round(shareholderValue));
             
-            // Compute and show Implied Share Price
+            // Implied Share Price
             const numShares = document.getElementById("total-shares").textContent;
             const sharePrice = shareholderValue / numShares;
             showText("share-price", sharePrice.toFixed(2));
