@@ -93,6 +93,7 @@ caption {
 
 #stock-table {
     border-collapse: collapse;
+    box-shadow: 3px 3px 3px black;
 }
 
 th, td {
