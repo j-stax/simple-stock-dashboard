@@ -88,17 +88,31 @@ nav {
     cursor: pointer;
 }
 
-#getDataBtn:hover {
+#getDataBtn:hover, #clearBtn:hover {
     background-color: blue;
 }
 
-#getDataBtn:active {
+#getDataBtn:active, #clearBtn:active {
     transform: scale(0.95);
-    background: radial-gradient(blue, skyblue);
+    background: radial-gradient(blue 20%, skyblue);
 }
 
 #getDataBtn:disabled {    
     background-color: grey;
+}
+
+#clearBtn {
+    display: inline-block;
+    background-color: lightblue;
+    border: none;
+    border-radius: 4px;
+    width: 90px;
+    height: 25px;
+    position: relative;
+    left: 1130px;
+    top: 5px;
+    box-shadow: 3px 3px 3px black;
+    cursor: pointer;
 }
 
 caption {
