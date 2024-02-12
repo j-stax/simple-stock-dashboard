@@ -39,7 +39,7 @@ button {
     background-color: lightblue;
     border: none;
     border-radius: 4px;
-    box-shadow: 1px 1px 3px black;
+    box-shadow: 2px 2px 3px black;
     margin-left: 3px;
     width: 60px;
     height: 22px;
@@ -67,14 +67,14 @@ button:active {
 label {
     font-size: 16pt;
     font-weight: bold;
-    text-shadow: 0 0 3px red, 0 0 3px indigo;
+    text-shadow: 0 0 3px red, 0 0 3px indigo, 2px 2px 2px black;
     margin-right: 5px;
 }
 
 #ticker {
     height: 20px;
     text-transform: uppercase;
-    box-shadow: 1px 1px 3px black;
+    box-shadow: 2px 2px 3px black;
     border: 1px solid;
     border-radius: 4px;
 }
