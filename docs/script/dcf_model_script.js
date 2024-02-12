@@ -254,45 +254,47 @@ function generateForecast(e) {
 
         // Compute and display figures for present value of free cash flow, cumulative pv of fcf, and implied share price
         if (cellNameGeneric === "fcf") {
-
-            // Compute and display the discount factor and present values of free cash flows for years[0-5]
-            let discountFactorX = 1;
-            let freeCashFlowX = document.getElementById("fcf0").textContent;
-            let pvCashFlowX = freeCashFlowX * discountFactorX;
-            showText("disc-factor0", parseFloat(discountFactorX).toFixed(2));
-            showText("pv-cashflow0", pvCashFlowX);
-
-            let cumulativePVCashFlows = pvCashFlowX;
-            for (let r = 1; r < 6; r++) {
-                freeCashFlowX = document.getElementById("fcf" + r).textContent;
-                discountFactorX = 1 / (1 + discountRate) ** r;
-                pvCashFlowX = freeCashFlowX * discountFactorX;
-                cumulativePVCashFlows += pvCashFlowX;                   // sum up pvCashFlowX
-                showText("disc-factor" + r, discountFactorX.toFixed(4));
-                showText("pv-cashflow" + r, Math.round(pvCashFlowX));
-            }
-
-            // Compute terminal value to present value and add to cumulativePVCashFlows
-            const freeCashFlowYr6 = cellInputVal;
-            let terminalRateDecimal = parseFloat(terminalRate) / 100;
-            const pvTerminalValueAtYr5 = freeCashFlowYr6 / terminalRateDecimal;
-            const pvTerminalValue = pvTerminalValueAtYr5 * discountFactorX;
-            cumulativePVCashFlows += pvTerminalValue;
-
-            // Show present value of terminal value and cumulative PV of free cash flow on table
-            showText("pv-cashflow6", Math.round(pvTerminalValue));
-            showText("cumul-pv-cashflow", Math.round(cumulativePVCashFlows));
-
-            // Compute and show Shareholder Value
-            const debt = parseFloat(document.getElementById("debt").textContent);
-            const cash = parseFloat(document.getElementById("cash").textContent);
-            const shareholderValue = cumulativePVCashFlows - debt + cash;
-            showText("shareholder-value", Math.round(shareholderValue));
             
-            // Implied Share Price
-            const numShares = document.getElementById("total-shares").textContent;
-            const sharePrice = shareholderValue / numShares;
-            showText("share-price", sharePrice.toFixed(2));
+            if (cellInputVal > 0) {
+                // Compute and display the discount factor and present values of free cash flows for years[0-5]
+                let discountFactorX = 1;
+                let freeCashFlowX = document.getElementById("fcf0").textContent;
+                let pvCashFlowX = freeCashFlowX * discountFactorX;
+                showText("disc-factor0", parseFloat(discountFactorX).toFixed(2));
+                showText("pv-cashflow0", pvCashFlowX);
+    
+                let cumulativePVCashFlows = pvCashFlowX;
+                for (let r = 1; r < 6; r++) {
+                    freeCashFlowX = document.getElementById("fcf" + r).textContent;
+                    discountFactorX = 1 / (1 + discountRate) ** r;
+                    pvCashFlowX = freeCashFlowX * discountFactorX;
+                    cumulativePVCashFlows += pvCashFlowX;                   // sum up pvCashFlowX
+                    showText("disc-factor" + r, discountFactorX.toFixed(4));
+                    showText("pv-cashflow" + r, Math.round(pvCashFlowX));
+                }
+    
+                // Compute terminal value to present value and add to cumulativePVCashFlows
+                const freeCashFlowYr6 = cellInputVal;
+                let terminalRateDecimal = parseFloat(terminalRate) / 100;
+                const pvTerminalValueAtYr5 = freeCashFlowYr6 / terminalRateDecimal;
+                const pvTerminalValue = pvTerminalValueAtYr5 * discountFactorX;
+                cumulativePVCashFlows += pvTerminalValue;
+    
+                // Show present value of terminal value and cumulative PV of free cash flow on table
+                showText("pv-cashflow6", Math.round(pvTerminalValue));
+                showText("cumul-pv-cashflow", Math.round(cumulativePVCashFlows));
+    
+                // Compute and show Shareholder Value
+                const debt = parseFloat(document.getElementById("debt").textContent);
+                const cash = parseFloat(document.getElementById("cash").textContent);
+                const shareholderValue = cumulativePVCashFlows - debt + cash;
+                showText("shareholder-value", Math.round(shareholderValue));
+                
+                // Implied Share Price
+                const numShares = document.getElementById("total-shares").textContent;
+                const sharePrice = shareholderValue / numShares;
+                showText("share-price", sharePrice.toFixed(2));
+            }
         }
     }
 
