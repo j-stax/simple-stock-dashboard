@@ -5,6 +5,7 @@ function domLoaded() {
     document.getElementById("assump-tax").addEventListener("input", assumptionsTaxInput);
     document.getElementById("getDataBtn").addEventListener("click", getHistoricalData);
     document.querySelector("#fcf6").addEventListener("input", generateForecast);
+    document.querySelector("#clearBtn").addEventListener("click", clearAll);
     
     // Add event listeners to current-year inputs in valuation table
     const year0InputsList = document.getElementsByClassName("year0-inputs");
@@ -299,7 +300,7 @@ function generateForecast(e) {
 
 function generateHistory(incomeStatementCurr, balanceSheetCurr, balanceSheetPrev, taxRate , yearX) {
     
-    // Formulate all table figures
+    // Formulate and show all table figures for previous three years
     const ebit = parseInt(incomeStatementCurr["ebit"]);
     const taxes = ebit * taxRate;
     const ebiat = ebit - taxes;
@@ -318,6 +319,25 @@ function generateHistory(incomeStatementCurr, balanceSheetCurr, balanceSheetPrev
     showText("capex-" + yearX, convertToMillions(capex));
     showText("working-cap-" + yearX, convertToMillions(chgInWorkingCap));
     showText("fcf-" + yearX, convertToMillions(freeCashFlow));
+}
+
+// Clear all fields
+function clearAll() {
+    let ticker = document.querySelector("#ticker");
+    let tickerButton = document.querySelector("#getDataBtn");
+    let capexAssump = document.querySelector("#capex-avg");
+    let fcfYear6 = document.querySelector("#pv-cashflow6");
+    const tableVals = document.getElementsByClassName("vals-for-clear");
+
+    ticker.value = "";
+    tickerButton.removeAttribute("disabled");
+    capexAssump.value = "";
+    capexAssump.disabled = true;
+    fcfYear6.textContent = "";
+
+    for (let val of tableVals) {
+        val.textContent = "";
+    }
 }
 
 // Convert number in terms of millions and add commas
