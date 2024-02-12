@@ -108,10 +108,11 @@ th, td {
     left: -75px;
     top: 600px;
     animation: toTheMoon 2s ease-in 2s 2 normal;
+    text-shadow: 0 0 20px red, 0 0 20px orange;
 }
 
 @keyframes toTheMoon {
-    from { left: 25px; top: 500px; }
-    to   { left: 1300px; top: -75px; }
+    from { left: 0%; top: 100%; }
+    to   { left: 100%; top: 0%; }
 }
    
