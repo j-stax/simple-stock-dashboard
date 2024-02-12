@@ -103,7 +103,7 @@ nav {
 }
 
 #getDataBtn:disabled {    
-    background-color: grey;
+    background-color: lightgrey;
 }
 
 #clearBtn {
